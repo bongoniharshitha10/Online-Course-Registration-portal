@@ -250,6 +250,23 @@ document.getElementById("registrationForm")
     });
 
 });
+//additional form validation using regular expressions and storing data in session storage
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+document.getElementById("email").addEventListener("input", function() {
+    if(!emailRegex.test(this.value)){
+        this.setCustomValidity("Please enter a valid email address");
+    } else {
+        this.setCustomValidity("");
+    }
+});
+document.getElementById("password").addEventListener("input", function() {
+    if(!passwordRegex.test(this.value)){
+        this.setCustomValidity("Password must be at least 8 characters long and contain both letters and numbers");
+    } else {
+        this.setCustomValidity("");
+    }
+});
 </script>
 
 <script src="./js/bootstrap.bundle.min.js"></script>
